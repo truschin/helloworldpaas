@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.truschin</groupId>
+	<artifactId>helloworldpaas</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- <dependency> <groupId>org.jongo</groupId> <artifactId>jongo</artifactId> 
+			<version>${jongo.version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.13.0-rc0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.vz.mongodb.jackson</groupId>
+			<artifactId>mongo-jackson-mapper</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sendgrid</groupId>
+			<artifactId>sendgrid-java</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>HelloWorldPaaS</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.cloudfoundry</groupId>
+				<artifactId>cf-maven-plugin</artifactId>
+				<version>1.0.4</version>
+				<configuration>
+					<server>cloud-foundry-credentials</server>
+					<username>truschin@gmail.com</username>
+					<password>fishbone</password>
+					<target>http://api.run.pivotal.io</target>
+					<org>truschin-org</org>
+					<space>development</space>
+					<appname>HelloWorldPaaS</appname>
+					<url>helloworldpaas.cfapps.io</url>
+					<memory>512</memory>
+					<instances>2</instances>
+					<env>
+						<ENV-VAR-NAME>env-var-value</ENV-VAR-NAME>
+					</env>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>  
