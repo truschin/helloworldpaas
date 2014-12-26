@@ -179,7 +179,7 @@ public class PersonResource {
 			e.printStackTrace();
 		}
 
-		tringBuilder sb = new StringBuilder("unknown");
+		StringBuilder sb = new StringBuilder("unknown");
 		try {
 
 			InetAddress ip = InetAddress.getLocalHost();
