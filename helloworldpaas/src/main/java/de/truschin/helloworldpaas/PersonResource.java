@@ -168,7 +168,7 @@ public class PersonResource {
 		SendGrid.Email email = new SendGrid.Email();
 
 		email.addTo("truschin@gmail.com");
-		email.setFrom("yours@youremail.com");
+		email.setFrom("your_name@youremail.com");
 		email.setSubject(p.firstName + " " + p.secondName + " added.");
 		email.setHtml(req);
 
